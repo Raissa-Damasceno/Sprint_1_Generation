@@ -1,0 +1,29 @@
+
+body{
+    margin: 0!important;
+}
+
+h1{
+    margin: 0 auto!important;
+}
+
+.title-bar h1{
+    font-family: 'Roboto', sans-serif;
+    color: red;
+}
+
+.title-bar {
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.container-fluid {
+    padding-right: 0!important;
+    padding-left: 0!important;
+    margin-right: 0!important;
+    margin-left: 0!important;
+}
