@@ -37,6 +37,33 @@
           </div>
           <div class="modal-body">
             <!-- Form -->
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="TaskName" aria-describedby="texthelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Assigned to</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Due date</label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Status</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="1">To Do</option>
+                        <option value="2">In-Progress</option>
+                        <option value="3">Review</option>
+                        <option value="4">Done</option>
+                      </select>
+                  </div>
+              </form>
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="submit">Submit</button>
