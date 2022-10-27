@@ -31,3 +31,16 @@ h1{
 .row{
     margin: 30px 10px
 }
+
+.card {
+    /* height: 300px;
+    min-height: 80%; */
+    min-height: 100%;
+}
+
+.addTaskButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}

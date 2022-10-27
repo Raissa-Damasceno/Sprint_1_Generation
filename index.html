@@ -83,14 +83,14 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Add new task</a>
+        <div class="addTaskButton">
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Add new task</a>
+        </div>
 
 
 
 
         <!-- Cards -->
-
-
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
                 <div class="card">
@@ -98,9 +98,9 @@
                         {Insert Task Name Here}
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">description here</li>
-                        <li class="list-group-item">assigned to</li>
-                        <li class="list-group-item">due date</li>
+                        <li class="list-group-item">Description: <br>{insert card description}</li>
+                        <li class="list-group-item">Assigned to: {insert assigned person}</li>
+                        <li class="list-group-item">Due date: {insert due date}</li>
                     </ul>
                     <div class="card-footer">
                         {Status}
@@ -108,18 +108,19 @@
                 </div>
             </div>
 
+            <!-- Card 2 -->
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        {Insert Task Name Here}
+                        Washing Dishes
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">description here</li>
-                        <li class="list-group-item">assigned to</li>
-                        <li class="list-group-item">due date</li>
+                        <li class="list-group-item">Don't forget to throw the trash too, and don't forget to buy more dish soap and a new brush and fix the water and feed the fish</li>
+                        <li class="list-group-item">Assigned to: Jimmy</li>
+                        <li class="list-group-item">Date date: 24/10/22</li>
                     </ul>
                     <div class="card-footer">
-                        {Status}
+                        In-Progress
                     </div>
                 </div>
             </div>
