@@ -14,6 +14,7 @@ const errorAssignedTo = document.getElementById("errorAssignedTo");
 const errorName = document.getElementById("errorName");
 const errorDate = document.getElementById("errorDate");
 
+
 function errorMessage(errorId, message, input) {
   errorId.innerHTML = message;
   errorId.style.display = "block";
@@ -105,6 +106,6 @@ const [month, day, year] = [
 ];
 
 let currentDate = `${day}-${month}-${year}`;
-console.log(currentDate); 
+console.log(currentDate);
 document.getElementById("time").innerText = `${currentDate}`;
 console.log(date);
