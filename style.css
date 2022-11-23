@@ -47,3 +47,8 @@ h1{
 #time {
     color: red;
 }
+
+.errorMessage{
+    color: red;
+    font-size: 10px;
+}

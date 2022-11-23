@@ -1,43 +1,85 @@
-console.log("test");
+const closeBtn = document.getElementById("closebtn");
 
 const taskForm = document.getElementById("taskForm");
+const formInput = document.getElementsByClassName("form-control");
+
 const taskName = document.getElementById("taskName");
 const taskDescription = document.getElementById("taskDescription");
 const taskAssignedTo = document.getElementById("taskAssignedTo");
 const taskDueDate = document.getElementById("taskDueDate");
 const taskStatus = document.getElementById("taskStatus");
 
+const errorDescription = document.getElementById("errorDescription");
+const errorAssignedTo = document.getElementById("errorAssignedTo");
+const errorName = document.getElementById("errorName");
+const errorDate = document.getElementById("errorDate");
+
+function errorMessage(errorId, message, input) {
+  errorId.innerHTML = message;
+  errorId.style.display = "block";
+  input.style.borderColor = "red";
+}
+
+function successMessage(errorId, input) {
+  input.style.borderColor = "#ced4da";
+  errorId.style.display = "none";
+}
+
 function checkName(input) {
   if (input.value === "" || input.value.length > 8) {
-    alert("Name must be filled in and less than 8 characters!");
+    errorMessage(
+      errorName,
+      "Name must be filled in and less than 8 characters!",
+      taskName
+    );
+  } else {
+    successMessage(errorName, taskName);
   }
-  console.log(input.value);
 }
 
 function checkDescription(input) {
   if (input.value === "" || input.value.length > 15) {
-    alert("Description must be filled in and less than 15 characters!");
+    errorMessage(
+      errorDescription,
+      "Description must be filled in and less than 15 characters!",
+      taskDescription
+    );
+  } else {
+    successMessage(errorDescription, taskDescription);
   }
-  console.log(input.value);
 }
 
 function checkAssignedTo(input) {
   if (input.value === "" || input.value.length > 8) {
-    alert("Name must be filled in and less than 8 characters!");
+    errorMessage(
+      errorAssignedTo,
+      "Name must be filled in and less than 8 characters!",
+      taskAssignedTo
+    );
+  } else {
+    successMessage(errorAssignedTo, taskAssignedTo);
   }
-  console.log(input.value);
 }
 
 // Come back to the date validation later.
 function checkDueDate(input) {
-  if (input.value === "" || input.value.length > 8) {
-    alert("date");
+  if (input.value === "") {
+    errorMessage(errorDate, "Select a valid date", taskDueDate);
+  } else {
+    successMessage(errorDate, taskDueDate);
   }
-  console.log(input.value);
 }
 
-function checkStatus(input) {
-  console.log(input.value);
+function resetForm() {
+  taskName.value = "";
+  taskDescription.value = "";
+  taskAssignedTo.value = "";
+  taskDueDate.value = "";
+
+  successMessage(errorName, taskName);
+  successMessage(errorDescription, taskDescription);
+  successMessage(errorAssignedTo, taskAssignedTo);
+  successMessage(errorDate, taskDueDate);
 }
 
 //Event Listeners
@@ -46,8 +88,13 @@ taskForm.addEventListener("submit", function (e) {
   checkName(taskName);
   checkDescription(taskDescription);
   checkAssignedTo(taskAssignedTo);
-  //checkDueDate(taskDueDate);
+  checkDueDate(taskDueDate);
   checkStatus(taskStatus);
+});
+
+closeBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  resetForm();
 });
 
 const date = new Date();
@@ -57,8 +104,7 @@ const [month, day, year] = [
   date.getFullYear(),
 ];
 
-// This arrangement can be altered based on how we want the date's format to appear.
 let currentDate = `${day}-${month}-${year}`;
-console.log(currentDate); // "17-6-2022"
+console.log(currentDate); 
 document.getElementById("time").innerText = `${currentDate}`;
 console.log(date);

@@ -30,15 +30,15 @@
             <span id="time"></span>
         </div>
 
-        <button type="button" class="btn btn-primary d-grid mx-auto m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            data-bs-whatever="@getbootstrap">Add a Task</button>
+        <button type="button" class="btn btn-primary d-grid mx-auto m-2" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add a Task</button>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                     </div>
                     <div class="modal-body">
                         <form id="taskForm">
@@ -46,21 +46,34 @@
                                 <label for="taskName" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="taskName"
                                     aria-describedby="task name input">
+                                <div id="errorName" class="errorMessage">
+
+                                </div>
                             </div>
+
                             <div class="mb-3">
                                 <label for="taskDescription" class="form-label">Description</label>
                                 <input type="text" class="form-control" id="taskDescription"
                                     aria-describedby="task description input">
+                                <div id="errorDescription" class="errorMessage">
+
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="taskAssignedTo" class="form-label">Assigned to</label>
                                 <input type="text" class="form-control" id="taskAssignedTo"
                                     aria-describedby="task assigned to input">
+                                <div id="errorAssignedTo" class="errorMessage">
+
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="taskDueDate" class="form-label">Due date</label>
                                 <input type="date" class="form-control" id="taskDueDate"
                                     aria-describedby="task due date input">
+                                <div id="errorDate" class="errorMessage">
+
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="taskStatus" class="form-label">Status</label>
@@ -70,10 +83,14 @@
                                     <option value="review">Review</option>
                                     <option value="done">Done</option>
                                 </select>
+                                <div id="errorStatus" class="errorMessage">
+
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Add task</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                    id="closebtn">Close</button>
                             </div>
                         </form>
                     </div>
