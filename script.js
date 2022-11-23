@@ -49,3 +49,15 @@ taskForm.addEventListener('submit',function(e) {
     //checkDueDate(taskDueDate);
     checkStatus(taskStatus);
 }); 
+
+
+
+
+const date = new Date();
+const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
+
+// This arrangement can be altered based on how we want the date's format to appear.
+let currentDate = `${day}-${month}-${year}`;
+console.log(currentDate); // "17-6-2022"
+document.getElementById("time").innerText= `${currentDate}`
+console.log(date)
