@@ -1,3 +1,5 @@
+let taskManager = new TaskManager(0);
+
 const closeBtn = document.getElementById("closebtn");
 
 const taskForm = document.getElementById("taskForm");
@@ -14,11 +16,14 @@ const errorAssignedTo = document.getElementById("errorAssignedTo");
 const errorName = document.getElementById("errorName");
 const errorDate = document.getElementById("errorDate");
 
+let zeroErrors = 0;
+
 
 function errorMessage(errorId, message, input) {
   errorId.innerHTML = message;
   errorId.style.display = "block";
   input.style.borderColor = "red";
+  zeroErrors++;
 }
 
 function successMessage(errorId, input) {
@@ -71,6 +76,14 @@ function checkDueDate(input) {
   }
 }
 
+function checkStatus(input) {
+    if (input.value === "") {
+      errorMessage(errorStatus, "Select a valid field", taskStatus);
+    } else {
+      successMessage(errorStatus, taskStatus);
+    }
+}
+
 function resetForm() {
   taskName.value = "";
   taskDescription.value = "";
@@ -91,6 +104,13 @@ taskForm.addEventListener("submit", function (e) {
   checkAssignedTo(taskAssignedTo);
   checkDueDate(taskDueDate);
   checkStatus(taskStatus);
+
+  if (zeroErrors == 0) {
+    taskManager.addTask(taskName.value, taskDescription.value, taskAssignedTo.value, taskDueDate.value, taskStatus.value);
+    console.log(taskManager);
+  } else {
+    return zeroErrors = 0;
+  }
 });
 
 closeBtn.addEventListener("click", function (e) {
