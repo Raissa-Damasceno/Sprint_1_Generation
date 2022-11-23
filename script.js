@@ -74,7 +74,7 @@ function checkDueDate(input) {
 function resetForm() {
   taskName.value = "";
   taskDescription.value = "";
-  taskAssignedTo.value = "";
+  taskAssignedTo.value = Date;
   taskDueDate.value = "";
 
   successMessage(errorName, taskName);
