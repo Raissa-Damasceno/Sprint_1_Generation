@@ -20,6 +20,11 @@ const errorStatus = document.getElementById("errorStatus");
 
 let zeroErrors = 0;
 
+//Display Date
+const date = new Date();
+let currentDate = date.toLocaleDateString("en-GB"); // display date into Australian/Bristish format.
+document.getElementById("time").innerText = `${currentDate}`;
+
 // Form validation
 function errorMessage(errorId, message, input) {
     errorId.innerHTML = message;
@@ -70,6 +75,21 @@ function checkAssignedTo(input) {
 }
 
 function checkDueDate(input) {
+    // notice that 'input' parameter is type of STRING and be in "date-only form" format e.g 2022-11-13.
+    // notice that 'date' global variable is type DATE and is currently in "date-time" format, e.g 2011-10-10T14:48:00.000+09:00
+    // Our goal here is to convert both 'input' and 'date' into "Data-only form" format for now.
+    const [month, day, year] = [
+        date.getMonth() + 1, // have to +1 because, getMonth() method starts month from 0 instead of 1.
+        date.getDate(),
+        date.getFullYear(),
+    ];
+
+    // The checkingDate variable will have the converted date into type "date-only form" used for comparison.
+    const checkingDate = `${year}-${month}-${day}`;
+
+    // here we check if input is empty.
+    // now, we have both 'checkingDate' and 'input' into "date-only form" format but are in type of STRING. Strings are harder to compare so..
+    // we have to convert both variables into type DATE so it can be used for comparison.
     if (input.value === "" || Date.parse(input.value) < Date.parse(checkingDate)) {
         errorMessage(errorDate, "Select a valid date", taskDueDate);
     } else {
@@ -129,19 +149,3 @@ closeBtn.addEventListener("click", function (e) {
     e.preventDefault();
     resetForm();
 });
-
-//Display Date
-const date = new Date();
-const [month, day, year] = [
-    date.getMonth() + 1, // have to +1 because, getMonth() method starts month from 0 instead of 1.
-    date.getDate(),
-    date.getFullYear(),
-];
-
-//let currentDate = `${day}-${month}-${year}`;
-let currentDate = date.toLocaleDateString("en-GB");
-let checkingDate = `${year}-${month}-${day}`; // This variable is used to compare with form's date output (contained in 'taskDueDate').
-// console.log(currentDate);
-document.getElementById("time").innerText = `${currentDate}`;
-
-//Display Card
