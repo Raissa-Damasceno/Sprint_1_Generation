@@ -20,7 +20,7 @@ const errorStatus = document.getElementById("errorStatus");
 
 let zeroErrors = 0;
 
-//Validation
+// Form validation
 function errorMessage(errorId, message, input) {
   errorId.innerHTML = message;
   errorId.style.display = "block";
@@ -70,10 +70,11 @@ function checkAssignedTo(input) {
 }
 
 function checkDueDate(input) {
-  if (input.value === "") {
+  if (input.value === "" || Date.parse(input.value) < Date.parse(checkingDate)) {
     errorMessage(errorDate, "Select a valid date", taskDueDate);
   } else {
     successMessage(errorDate, taskDueDate);
+    console.log("yes");
   }
 }
 
@@ -85,7 +86,7 @@ function checkStatus(input) {
   }
 }
 
-//Clear Form
+// Clear Form
 function resetForm() {
   taskName.value = "";
   taskDescription.value = "";
@@ -100,7 +101,7 @@ function resetForm() {
   successMessage(errorStatus, taskStatus);
 }
 
-//Event Listeners
+// Form buttons event Listeners
 taskForm.addEventListener("submit", function (e) {
   e.preventDefault();
   checkName(taskName);
@@ -110,6 +111,8 @@ taskForm.addEventListener("submit", function (e) {
   checkStatus(taskStatus);
 
   if (zeroErrors == 0) {
+    console.log(`at addTask ${taskDueDate.value}`);
+
     taskManager.addTask(
       taskName.value,
       taskDescription.value,
@@ -133,12 +136,13 @@ closeBtn.addEventListener("click", function (e) {
 //Display Date
 const date = new Date();
 const [month, day, year] = [
-  date.getMonth(),
+  date.getMonth()+1, // have to +1 because, getMonth() method starts month from 0 instead of 1.
   date.getDate(),
   date.getFullYear(),
 ];
 
 let currentDate = `${day}-${month}-${year}`;
+let checkingDate = `${year}-${month}-${day}`; // This variable is used to compare with form's date output.
 // console.log(currentDate);
 document.getElementById("time").innerText = `${currentDate}`;
 

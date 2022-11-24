@@ -17,6 +17,7 @@ function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
 
   return cardhtml;
 }
+
 class TaskManager {
   constructor(id) {
     this._id = id;
@@ -50,28 +51,29 @@ class TaskManager {
   }
 
   render() {
-    let dysplayCard = "";
+    let displayCard = "";
 
     this.taskList.map((task, index) => {
-      dysplayCard += createTaskHTML(
+      displayCard += createTaskHTML(
         task.taskName,
         task.description,
         task.assignedTo,
-        task.taskDueDate,
+        task.dueDate,
         task.status,
         index
       );
     });
 
-    const cardwrap = document.getElementById("cardwrap");
+    const cardWrap = document.getElementById("cardWrap");
 
-    return cardwrap.innerHTML = dysplayCard;
+    return cardWrap.innerHTML = displayCard;
   }
 }
 
+/* Test comment.
 let tasks = new TaskManager(0);
 tasks.addTask("Jimmy", "cooking", "Jimmy", "32", "TO DO");
 tasks.addTask("Travis", "cooking", "Travis", "32", "TO DO");
 tasks.addTask("Elias", "cooking", "Travis", "32", "In Progress");
-
+*/
 // console.log(tasks);
