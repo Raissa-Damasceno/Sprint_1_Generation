@@ -1,13 +1,16 @@
 function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
-  const cardhtml = `<div class="col">
+
+    const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB");
+
+    console.log(status);
+
+    const cardhtml = `<div class="col">
   <div class="card" id=${id}>
-    <div class="card-header">
-        ${name}
-    </div>
+    <div class="card-header">${name}</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item"> ${description}</li>
-        <li class="list-group-item">Assigned to:  ${assignedTo}</li>
-        <li class="list-group-item">Due date:  ${dueDate}</li>
+        <li class="list-group-item">Assigned to: ${assignedTo}</li>
+        <li class="list-group-item">Due date: ${australianDueDate}</li>
     </ul>
     <div class="card-footer">
     ${status}
@@ -15,59 +18,59 @@ function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
 </div>
 </div>`;
 
-  return cardhtml;
+    return cardhtml;
 }
 
 class TaskManager {
-  constructor(id) {
-    this._id = id;
-    this.taskList = [];
-  }
-
-  addTask(taskName, description, assignedTo, dueDate, status) {
-    const newTask = {
-      id: this._id++,
-      taskName: taskName,
-      description: description,
-      assignedTo: assignedTo,
-      dueDate: dueDate,
-      status: status,
-    };
-    this.taskList.push(newTask);
-  }
-
-  getAllTasks() {
-    return this.taskList;
-  }
-
-  getTasksWithStatus(status) {
-    let taskWithStatus = [];
-    for (let i = 0; i < this.taskList.length; i++) {
-      if (this.taskList[i].status == status) {
-        taskWithStatus.push(this.taskList[i]);
-      }
+    constructor(id) {
+        this._id = id;
+        this.taskList = [];
     }
-    return taskWithStatus;
-  }
 
-  render() {
-    let displayCard = "";
+    addTask(taskName, description, assignedTo, dueDate, status) {
+        const newTask = {
+            id: this._id++,
+            taskName: taskName,
+            description: description,
+            assignedTo: assignedTo,
+            dueDate: dueDate,
+            status: status,
+        };
+        this.taskList.push(newTask);
+    }
 
-    this.taskList.map((task, index) => {
-      displayCard += createTaskHTML(
-        task.taskName,
-        task.description,
-        task.assignedTo,
-        task.dueDate,
-        task.status,
-        index
-      );
-    });
+    getAllTasks() {
+        return this.taskList;
+    }
 
-    const cardWrap = document.getElementById("cardWrap");
+    getTasksWithStatus(status) {
+        let taskWithStatus = [];
+        for (let i = 0; i < this.taskList.length; i++) {
+            if (this.taskList[i].status == status) {
+                taskWithStatus.push(this.taskList[i]);
+            }
+        }
+        return taskWithStatus;
+    }
 
-    return cardWrap.innerHTML = displayCard;
-  }
+    render() {
+        let displayCard = "";
+
+        this.taskList.map((task, index) => {
+            displayCard += createTaskHTML(
+                task.taskName,
+                task.description,
+                task.assignedTo,
+                task.dueDate,
+                task.status,
+                index
+            );
+        });
+
+        const cardWrap = document.getElementById("cardWrap");
+
+        return cardWrap.innerHTML = displayCard;
+    }
 }
 
 /* Test comment.
