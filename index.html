@@ -21,9 +21,7 @@
 </head>
 
 <body>
-
     <div class='container-fluid'>
-
         <!-- Title Bar -->
         <div class='title-bar'>
             <h1>To Do List - Generation</h1>
@@ -89,6 +87,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Add task</button>
+                                <button type="submit" class="btn btn-primary">Delete task</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                     id="closebtn">Close</button>
                             </div>
@@ -97,103 +96,15 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- Cards -->
-
-        <!-- We created responsiveness using Bootstrap's card grid -->
-        <!-- 3 Columns for screens medium and above, otherwise, 1 column -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Card 1 -->
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Make Dinner
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cook spagetti without using asaperagus </li>
-                        <li class="list-group-item">Assigned to: Travis</li>
-                        <li class="list-group-item">Due date: 24/10/22</li>
-                    </ul>
-                    <div class="card-footer">
-                        To Do
-                    </div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Washing Dishes
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Don't forget to throw the trash too, and don't forget to buy more
-                            dish soap and a new brush and fix the water and feed the fish</li>
-                        <li class="list-group-item">Assigned to: Jimmy</li>
-                        <li class="list-group-item">Date date: 24/10/22</li>
-                    </ul>
-                    <div class="card-footer">
-                        In-Progress
-                    </div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Review Raissa's artwork
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">The artwork is to be sold for 5 million, need someone to negotiate
-                            for higher</li>
-                        <li class="list-group-item">Assigned to: Travis, Mitchell</li>
-                        <li class="list-group-item">Due date: 1/11/22</li>
-                    </ul>
-                    <div class="card-footer">
-                        Review
-                    </div>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Fix the bug
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">There's something wrong with the javascript</li>
-                        <li class="list-group-item">Assigned to: Jimmy, Travis, Raissa, Mitchell</li>
-                        <li class="list-group-item">Due date: ASAP</li>
-                    </ul>
-                    <div class="card-footer">
-                        To Do
-                    </div>
-                </div>
-            </div>
-            <!-- Card 5 -->
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        Weekly housekeeping
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Buy the grocery, don't forget the milk, replenish all the snacks
-                        </li>
-                        <li class="list-group-item">Assigned: Travis</li>
-                        <li class="list-group-item">Due date: 30/10/22</li>
-                    </ul>
-                    <div class="card-footer">
-                        Done
-                    </div>
-                </div>
-            </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cardwrap">
         </div>
-        <!-- Script -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-            </script>
-        <script src="TaskManager.js"></script>
-        <script src="script.js"></script>
+    </div>
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+        </script>
+    <script src="TaskManager.js"></script>
+    <script src="script.js"></script>
 </body>
 
 
