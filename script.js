@@ -1,3 +1,4 @@
+//Global Variables
 let taskManager = new TaskManager(0);
 
 const closeBtn = document.getElementById("closebtn");
@@ -15,10 +16,11 @@ const errorDescription = document.getElementById("errorDescription");
 const errorAssignedTo = document.getElementById("errorAssignedTo");
 const errorName = document.getElementById("errorName");
 const errorDate = document.getElementById("errorDate");
+const errorStatus = document.getElementById("errorStatus");
 
 let zeroErrors = 0;
 
-
+//Validation
 function errorMessage(errorId, message, input) {
   errorId.innerHTML = message;
   errorId.style.display = "block";
@@ -67,7 +69,6 @@ function checkAssignedTo(input) {
   }
 }
 
-// Come back to the date validation later.
 function checkDueDate(input) {
   if (input.value === "") {
     errorMessage(errorDate, "Select a valid date", taskDueDate);
@@ -77,23 +78,26 @@ function checkDueDate(input) {
 }
 
 function checkStatus(input) {
-    if (input.value === "") {
-      errorMessage(errorStatus, "Select a valid field", taskStatus);
-    } else {
-      successMessage(errorStatus, taskStatus);
-    }
+  if (input.value === "") {
+    errorMessage(errorStatus, "Select a valid field", taskStatus);
+  } else {
+    successMessage(errorStatus, taskStatus);
+  }
 }
 
+//Clear Form
 function resetForm() {
   taskName.value = "";
   taskDescription.value = "";
-  taskAssignedTo.value = Date;
+  taskAssignedTo.value = "";
   taskDueDate.value = "";
+  taskStatus.value = "";
 
   successMessage(errorName, taskName);
   successMessage(errorDescription, taskDescription);
   successMessage(errorAssignedTo, taskAssignedTo);
   successMessage(errorDate, taskDueDate);
+  successMessage(errorStatus, taskStatus);
 }
 
 //Event Listeners
@@ -106,10 +110,18 @@ taskForm.addEventListener("submit", function (e) {
   checkStatus(taskStatus);
 
   if (zeroErrors == 0) {
-    taskManager.addTask(taskName.value, taskDescription.value, taskAssignedTo.value, taskDueDate.value, taskStatus.value);
+    taskManager.addTask(
+      taskName.value,
+      taskDescription.value,
+      taskAssignedTo.value,
+      taskDueDate.value,
+      taskStatus.value
+    );
+    resetForm();
+    taskManager.render();
     console.log(taskManager);
   } else {
-    return zeroErrors = 0;
+    return (zeroErrors = 0);
   }
 });
 
@@ -118,6 +130,7 @@ closeBtn.addEventListener("click", function (e) {
   resetForm();
 });
 
+//Display Date
 const date = new Date();
 const [month, day, year] = [
   date.getMonth(),
@@ -126,6 +139,7 @@ const [month, day, year] = [
 ];
 
 let currentDate = `${day}-${month}-${year}`;
-console.log(currentDate);
+// console.log(currentDate);
 document.getElementById("time").innerText = `${currentDate}`;
-console.log(date);
+
+//Display Card
