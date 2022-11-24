@@ -1,6 +1,6 @@
 function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
-    
+
     const cardhtml = `<div class="col">
   <div class="card" id=${id}>
     <div class="card-header">${name}</div>
@@ -70,10 +70,10 @@ class TaskManager {
     }
 }
 
-/* Test comment.
+/* commented out, can use to test addTask functionality.
 let tasks = new TaskManager(0);
 tasks.addTask("Jimmy", "cooking", "Jimmy", "32", "TO DO");
 tasks.addTask("Travis", "cooking", "Travis", "32", "TO DO");
 tasks.addTask("Elias", "cooking", "Travis", "32", "In Progress");
+console.log(tasks);
 */
-// console.log(tasks);

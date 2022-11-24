@@ -20,7 +20,7 @@ const errorStatus = document.getElementById("errorStatus");
 
 let zeroErrors = 0;
 
-//Display Date
+// Display date
 const date = new Date();
 let currentDate = date.toLocaleDateString("en-GB"); // display date into Australian/Bristish format.
 document.getElementById("time").innerText = `${currentDate}`;
@@ -84,11 +84,11 @@ function checkDueDate(input) {
         date.getFullYear(),
     ];
 
-    // The checkingDate variable will have the converted date into type "date-only form" used for comparison.
+    // The checkingDate variable will store the converted 'date' into type "date-only form" used for comparison.
     const checkingDate = `${year}-${month}-${day}`;
 
     // here we check if input is empty.
-    // now, we have both 'checkingDate' and 'input' into "date-only form" format but are in type of STRING. Strings are harder to compare so..
+    // now, we have both 'checkingDate' and 'input' into "date-only form" format but both are in type of STRING. Strings are harder to compare so..
     // we have to convert both variables into type DATE so it can be used for comparison.
     if (input.value === "" || Date.parse(input.value) < Date.parse(checkingDate)) {
         errorMessage(errorDate, "Select a valid date", taskDueDate);
@@ -129,6 +129,7 @@ taskForm.addEventListener("submit", function (e) {
     checkDueDate(taskDueDate);
     checkStatus(taskStatus);
 
+    // if there's no errors in form, add a task into TaskManager, reset form and render form. Otherwise, form will persist until no more errors.
     if (zeroErrors == 0) {
         taskManager.addTask(
             taskName.value,
@@ -139,7 +140,6 @@ taskForm.addEventListener("submit", function (e) {
         );
         resetForm();
         taskManager.render();
-        console.log(taskManager);
     } else {
         return (zeroErrors = 0);
     }
