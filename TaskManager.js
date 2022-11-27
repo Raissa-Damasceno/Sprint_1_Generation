@@ -6,8 +6,8 @@ function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
     <div class="card-header fw-bold">${name}</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item"> ${description}</li>
-        <li class="list-group-item"><span class="fw-bold">Assigned to:</span> ${assignedTo}</li>
-        <li class="list-group-item"><span class="fw-bold">Due date:</span> ${australianDueDate}</li>
+        <li class="list-group-item">Assigned to: <span class="fw-bold">${assignedTo}</span></li>
+        <li class="list-group-item">Due date: <span class="fw-bold">${australianDueDate}</span></li>
     </ul>
     <div class="card-footer fw-bold">
     ${status}
