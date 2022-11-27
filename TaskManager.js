@@ -3,13 +3,13 @@ function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
 
     const cardhtml = `<div class="col">
   <div class="card" id=${id}>
-    <div class="card-header">${name}</div>
+    <div class="card-header fw-bold">${name}</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item"> ${description}</li>
-        <li class="list-group-item">Assigned to: ${assignedTo}</li>
-        <li class="list-group-item">Due date: ${australianDueDate}</li>
+        <li class="list-group-item"><span class="fw-bold">Assigned to:</span> ${assignedTo}</li>
+        <li class="list-group-item"><span class="fw-bold">Due date:</span> ${australianDueDate}</li>
     </ul>
-    <div class="card-footer">
+    <div class="card-footer fw-bold">
     ${status}
     </div>
 </div>

@@ -1,40 +1,45 @@
-
-body{
-    margin: 0!important;
+body {
+    margin: 0 !important;
 }
 
-h1{
-    margin: 0 auto!important;
+h1 {
+    margin: 0 auto !important;
 }
 
-.title-bar h1{
+.title-bar h1 {
     font-family: 'Roboto', sans-serif;
     color: red;
+    font-size: 30px;
 }
 
 .title-bar {
-    height: 90px;
+    height: 15%;
     width: 100%;
     background-color: black;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
     flex-direction: column;
 }
 
 .container-fluid {
-    padding-right: 0!important;
-    padding-left: 0!important;
-    margin-right: 0!important;
-    margin-left: 0!important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 
-.row{
+.row {
     margin: 30px 10px
 }
 
 .card {
-    min-height: 100%; /* Make the cards all the same height */
+    min-height: 100%;
+    /* Make the cards all the same height */
+}
+
+.card:hover {
+    border-color: darkgray;
 }
 
 .addTaskButton {
@@ -46,9 +51,16 @@ h1{
 
 #time {
     color: red;
+    font-size: 20px;
 }
 
-.errorMessage{
+.errorMessage {
     color: red;
-    font-size: 10px;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 300px) {
+    .title-bar h1 {
+        font-size: 20px;
+    }
 }
