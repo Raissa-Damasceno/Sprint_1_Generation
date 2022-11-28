@@ -58,6 +58,8 @@ h1{
 .container-page{
     height: 100vh;
     display: flex;
+    justify-content: center;
+
 }
 
 .containerbtn{
@@ -90,6 +92,11 @@ h1{
 }
 .card-footer{
     background-color:rgb(218, 234, 233)
+}
+
+.list-group-item{
+    /* background-color: aqua!important; */
+    font-size: 12px;
 }
 
 @media screen and (max-width: 300px) {
