@@ -75,24 +75,18 @@ function checkAssignedTo(input) {
 }
 
 function checkDueDate(input) {
-    // notice that 'input.value' is type of STRING and be in "date-only form" format e.g 2022-11-13, "yyyy-mm-dd"
-    // notice that 'date' global variable is type DATE and is currently in "date-time" format, e.g 2011-10-10T14:48:00.000+09:00
-    // Our goal here is to convert both 'input' and 'date' into "yyyy-mm-dd" format for now.
-    // Reason being, that Date.parse() will accept "yyyy-mm-dd" format strings as a parameter AND the form only outputs value of "yyyy-mm-dd" strings.
+
     const [month, day, year] = [
-        date.getMonth() + 1, // have to +1 because, getMonth() method starts month from 0 instead of 1.
+        date.getMonth() + 1, 
         date.getDate(),
         date.getFullYear(),
     ];
 
-    // The checkingDate variable will store the converted 'date' into type "date-only form" used for comparison.
     const checkingDate = `${year}-${month}-${day}`;
-
-    // here we check if input is empty.
-    // now, we have both 'checkingDate' and 'input' into "yyyy-mm-dd" format but both are in type of STRING. Strings are harder to compare so..
-    // we have to convert both variables into type DATE so it can be used for comparison.
-    if (input.value === "" || Date.parse(input.value) < Date.parse(checkingDate)) {
+    if (input.value === "" ) {
         errorMessage(errorDate, "Select a valid date", taskDueDate);
+    } else if (Date.parse(input.value) < Date.parse(checkingDate)){
+        errorMessage(errorDate, "The due date cannot be earlier than the current date", taskDueDate);
     } else {
         successMessage(errorDate, taskDueDate);
     }

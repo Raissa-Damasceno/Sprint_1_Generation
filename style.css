@@ -46,9 +46,9 @@ h1{
     margin: 10px;
 }
 
-.errorMessage{
+.errorMessage {
     color: red;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .btnnewtask{
@@ -90,4 +90,10 @@ h1{
 }
 .card-footer{
     background-color:rgb(218, 234, 233)
+}
+
+@media screen and (max-width: 300px) {
+    .title-bar h1 {
+        font-size: 20px;
+    }
 }
