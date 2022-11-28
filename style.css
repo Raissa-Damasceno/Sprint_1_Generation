@@ -7,19 +7,15 @@ h1{
     margin: 0 auto!important;
 }
 
-.title-bar h1{
-    font-family: 'Roboto', sans-serif;
-    color: red;
-}
-
 .title-bar {
-    height: 90px;
+    height: 50px;
     width: 100%;
-    background-color: black;
+    background-color: rgb(142, 175, 173);
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: flex-end;  
     flex-direction: column;
+    opacity: 0.9;
 }
 
 .container-fluid {
@@ -45,10 +41,53 @@ h1{
 }
 
 #time {
-    color: red;
+    color: rgb(26, 22, 22);
+    opacity: 0.8;
+    margin: 10px;
 }
 
 .errorMessage{
     color: red;
     font-size: 10px;
+}
+
+.btnnewtask{
+    border-radius: 50%;
+}
+
+.container-page{
+    height: 100vh;
+    display: flex;
+}
+
+.containerbtn{
+    background: url(./img/note.png) no-repeat center;
+    background-size: cover;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.containerbtn h1{
+    font-size: 25px;
+    font-style: italic;
+}
+
+.container-cards{
+    width: 100%;
+}
+.container-cards h1{
+    text-align: center;
+    border-bottom: 1px dotted black;
+    width: 40%;
+    font-size: 35px;
+}
+
+.card-header{
+    background-color:rgb(218, 234, 233)
+}
+.card-footer{
+    background-color:rgb(218, 234, 233)
 }

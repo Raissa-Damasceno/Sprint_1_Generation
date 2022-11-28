@@ -24,13 +24,29 @@
     <div class='container-fluid'>
         <!-- Title Bar -->
         <div class='title-bar'>
-            <h1>To Do List - Generation</h1>
             <span id="time"></span>
         </div>
 
-        <!-- Modal Button and Form -->
-        <button type="button" class="btn btn-primary d-grid mx-auto m-2" data-bs-toggle="modal"
-            data-bs-target="#addTaskModal" data-bs-whatever="@getbootstrap">Add a Task</button>
+        <div class="container-page">
+
+            <div class="containerbtn">
+                <!-- Modal Button and Form -->
+                <h1>Create a new task</h1>
+                <button type="button" class="btn btn-primary d-grid mx-auto m-2 btnnewtask" data-bs-toggle="modal"
+                    data-bs-target="#addTaskModal" data-bs-whatever="@getbootstrap">+</button>
+            </div>
+
+            <div class="container-cards">
+                <h1>To Do List</h1>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="cardWrap">
+                </div>
+
+            </div>
+
+
+
+        </div>
+
 
         <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -96,8 +112,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="cardWrap">
         </div>
     </div>
     <!-- Script -->
