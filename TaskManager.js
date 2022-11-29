@@ -1,25 +1,55 @@
+// function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
+//     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
+
+//     let cardhtml;
+
+//     if (status === "DONE") {
+//         cardhtml = `<div class="col">
+//   <div class="card" id=${id}>
+//     <div class="card-header">${name}</div>
+//     <ul class="list-group list-group-flush">
+//         <li class="list-group-item"> ${description}</li>
+//         <li class="list-group-item">Assigned to: ${assignedTo}</li>
+//         <li class="list-group-item">Due date: ${australianDueDate}</li>
+//     </ul>
+//     <div class="card-footer">
+//     ${status}
+//     </div>
+//     <button type="button" class="delete-button" id='deletebtn'>Delete</button>
+// </div>
+// </div>`;
+//     } else {
+//         cardhtml = `<div class="col">
+//   <div class="card" id=${id}>
+//     <div class="card-header">${name}</div>
+//     <ul class="list-group list-group-flush">
+//         <li class="list-group-item"> ${description}</li>
+//         <li class="list-group-item">Assigned to: ${assignedTo}</li>
+//         <li class="list-group-item">Due date: ${australianDueDate}</li>
+//     </ul>
+//     <div class="card-footer">
+//     ${status}
+//     <button type="button" class="updateStatus-button" id='updateStatus-button_${id}'>Update</button>
+//     </div>
+//     <button type="button" class="delete-button" id='deletebtn'>Delete</button>
+// </div>
+// </div>`;
+//     }
+
+//     return cardhtml;
+// }
+
 function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
-
-    let cardhtml;
-
+    
+    let displayStatus;
     if (status === "DONE") {
-        cardhtml = `<div class="col">
-  <div class="card" id=${id}>
-    <div class="card-header">${name}</div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"> ${description}</li>
-        <li class="list-group-item">Assigned to: ${assignedTo}</li>
-        <li class="list-group-item">Due date: ${australianDueDate}</li>
-    </ul>
-    <div class="card-footer">
-    ${status}
-    </div>
-    <button type="button" class="delete-button" id='deletebtn'>Delete</button>
-</div>
-</div>`;
+        displayStatus = "none";
     } else {
-        cardhtml = `<div class="col">
+        displayStatus = "block";
+    }
+
+    const cardhtml = `<div class="col">
   <div class="card" id=${id}>
     <div class="card-header">${name}</div>
     <ul class="list-group list-group-flush">
@@ -29,12 +59,11 @@ function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     </ul>
     <div class="card-footer">
     ${status}
-    <button type="button" class="updateStatus-button" id='updateStatus-button_${id}'>Update</button>
+    <button type="button" class="updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Update</button>
     </div>
     <button type="button" class="delete-button" id='deletebtn'>Delete</button>
 </div>
 </div>`;
-    }
 
     return cardhtml;
 }
