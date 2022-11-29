@@ -65,7 +65,7 @@ h1{
 .containerbtn{
     background: url(./img/note.png) no-repeat center;
     background-size: cover;
-    width: 60%;
+    width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -78,7 +78,7 @@ h1{
 }
 
 .container-cards{
-    width: 100%;
+    width: 60%;
 }
 .container-cards h1{
     text-align: center;
@@ -95,7 +95,6 @@ h1{
 }
 
 .list-group-item{
-    /* background-color: aqua!important; */
     font-size: 12px;
 }
 
