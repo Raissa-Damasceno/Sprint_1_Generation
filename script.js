@@ -158,11 +158,9 @@ const cardWrap = document.getElementById("cardWrap");
 cardWrap.addEventListener("click", function (e) {
   if (e.target.classList.contains("delete-button")) {
     let parentElement = e.target.parentElement;
-
     let taskId = Number(parentElement.id);
 
     taskManager.deleteById(taskId);
-
     taskManager.save();
     taskManager.render();
   }
@@ -171,13 +169,9 @@ cardWrap.addEventListener("click", function (e) {
     let parentElement = e.target.parentElement;
     let taskId = Number(parentElement.parentElement.id);
 
-    //console.log(taskId);
-    console.log(parentElement);
-    console.log(taskId);
     taskManager.markAsDoneById(taskId);
-
     taskManager.save();
     taskManager.render();
   }
-
+  
 });

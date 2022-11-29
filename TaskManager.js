@@ -1,7 +1,7 @@
 function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
-    
     let displayStatus;
+    
     if (status === "Done") {
         displayStatus = "none";
     } else {
@@ -13,13 +13,12 @@ function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     <div class="card-header">${name}</div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item"> ${description}</li>
-        <li class="list-group-item">Assigned to: ${assignedTo}</li>
-        <li class="list-group-item">Due date: ${australianDueDate}</li>
+        <li class="list-group-item">Assigned to: <span class="fw-bold">${assignedTo}<span></li>
+        <li class="list-group-item">Due date: <span class="fw-bold">${australianDueDate}</span></li>
     </ul>
-    <div class="card-footer">
+    <div class="card-footer d-grid gap-2 d-flex justify-content-between align-content-between">
     ${status}
-    <button type="button" class="btn btn-primary updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Mark as Done</button>
-    
+        <button type="button" class="btn btn-primary updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Mark as Done</button>
     </div>
     <button type="button" class="btn btn-primary delete-button" id='deletebtn'>Delete</button>
 </div>
@@ -59,6 +58,7 @@ class TaskManager {
         }
         return taskWithStatus;
     }
+
     deleteById(taskId) {
         const newTask = [];
         for (let i = 0; i < this.taskList.length; i++) {
@@ -81,6 +81,7 @@ class TaskManager {
 
     getTaskById(taskId) {
         let taskByID;
+
         for (let i = 0; i < this.taskList.length; i++) {
             const task = this.taskList[i];
             console.log(task);
@@ -107,29 +108,24 @@ class TaskManager {
         });
 
         const cardWrap = document.getElementById("cardWrap");
-
         return (cardWrap.innerHTML = displayCard);
     }
 
     save() {
         const tasksJson = JSON.stringify(this.taskList);
-
         localStorage.setItem("tasks", tasksJson);
 
         const currentId = String(this._id);
-
         localStorage.setItem("currentId", currentId);
     }
 
     load() {
         if (localStorage.getItem("tasks")) {
             const tasksJson = localStorage.getItem("tasks");
-
             this.taskList = JSON.parse(tasksJson);
         }
         if (localStorage.getItem("currentId")) {
             const currentId = localStorage.getItem("currentId");
-
             this._id = Number(currentId);
         }
     }

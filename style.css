@@ -91,12 +91,13 @@ h1{
     background-color:rgb(218, 234, 233)
 }
 .card-footer{
-    background-color:rgb(218, 234, 233)
+    background-color:rgb(218, 234, 233);
 }
 
 .list-group-item{
     font-size: 12px;
 }
+
 
 @media screen and (max-width: 300px) {
     .title-bar h1 {
