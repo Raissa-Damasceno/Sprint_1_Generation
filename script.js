@@ -140,7 +140,7 @@ taskForm.addEventListener("submit", function (e) {
       taskDueDate.value,
       taskStatus.value
     );
-    // resetForm();
+    resetForm();
     taskManager.save();
     taskManager.render();
   } else {

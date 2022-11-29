@@ -1,49 +1,8 @@
-// function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
-//     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
-
-//     let cardhtml;
-
-//     if (status === "DONE") {
-//         cardhtml = `<div class="col">
-//   <div class="card" id=${id}>
-//     <div class="card-header">${name}</div>
-//     <ul class="list-group list-group-flush">
-//         <li class="list-group-item"> ${description}</li>
-//         <li class="list-group-item">Assigned to: ${assignedTo}</li>
-//         <li class="list-group-item">Due date: ${australianDueDate}</li>
-//     </ul>
-//     <div class="card-footer">
-//     ${status}
-//     </div>
-//     <button type="button" class="delete-button" id='deletebtn'>Delete</button>
-// </div>
-// </div>`;
-//     } else {
-//         cardhtml = `<div class="col">
-//   <div class="card" id=${id}>
-//     <div class="card-header">${name}</div>
-//     <ul class="list-group list-group-flush">
-//         <li class="list-group-item"> ${description}</li>
-//         <li class="list-group-item">Assigned to: ${assignedTo}</li>
-//         <li class="list-group-item">Due date: ${australianDueDate}</li>
-//     </ul>
-//     <div class="card-footer">
-//     ${status}
-//     <button type="button" class="updateStatus-button" id='updateStatus-button_${id}'>Update</button>
-//     </div>
-//     <button type="button" class="delete-button" id='deletebtn'>Delete</button>
-// </div>
-// </div>`;
-//     }
-
-//     return cardhtml;
-// }
-
 function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
     
     let displayStatus;
-    if (status === "DONE") {
+    if (status === "Done") {
         displayStatus = "none";
     } else {
         displayStatus = "block";
@@ -59,9 +18,10 @@ function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     </ul>
     <div class="card-footer">
     ${status}
-    <button type="button" class="updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Update</button>
+    <button type="button" class="btn btn-primary updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Mark as Done</button>
+    
     </div>
-    <button type="button" class="delete-button" id='deletebtn'>Delete</button>
+    <button type="button" class="btn btn-primary delete-button" id='deletebtn'>Delete</button>
 </div>
 </div>`;
 
@@ -112,23 +72,11 @@ class TaskManager {
     }
 
     markAsDoneById(taskId) {
-        //console.log(taskId + "This is the id in Task manager");
         for (let i = 0; i < this.taskList.length; i++) {
             if (this.taskList[i].id == taskId) {
-                //console.log(this.taskList[i].id + "this is the one");
-                this.taskList[i].status = "DONE";
-                //document.getElementById(`updateStatus-button_${taskId}`);
-
-
-                //const currentUpdateButton = document.getElementById(`updateStatus-button_${taskId}`);
-                //currentUpdateButton.style.display = "none";
-
-                //console.log(currentUpdateButton);
-                //currentUpdateButton.remove();
-                //currentUpdateButton.style.backgroundColor = "blue";
+                this.taskList[i].status = "Done";
             }
         }
-        //console.log(this.taskList);
     }
 
     getTaskById(taskId) {
