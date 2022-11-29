@@ -166,4 +166,18 @@ cardWrap.addEventListener("click", function (e) {
     taskManager.save();
     taskManager.render();
   }
+
+  if (e.target.classList.contains("updateStatus-button")) {
+    let parentElement = e.target.parentElement;
+    let taskId = Number(parentElement.parentElement.id);
+
+    //console.log(taskId);
+    console.log(parentElement);
+    console.log(taskId);
+    taskManager.markAsDoneById(taskId);
+
+    taskManager.save();
+    taskManager.render();
+  }
+
 });
