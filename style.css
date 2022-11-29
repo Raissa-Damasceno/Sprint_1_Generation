@@ -58,12 +58,14 @@ h1{
 .container-page{
     height: 100vh;
     display: flex;
+    justify-content: center;
+
 }
 
 .containerbtn{
     background: url(./img/note.png) no-repeat center;
     background-size: cover;
-    width: 60%;
+    width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -76,7 +78,7 @@ h1{
 }
 
 .container-cards{
-    width: 100%;
+    width: 60%;
 }
 .container-cards h1{
     text-align: center;
@@ -90,6 +92,10 @@ h1{
 }
 .card-footer{
     background-color:rgb(218, 234, 233)
+}
+
+.list-group-item{
+    font-size: 12px;
 }
 
 @media screen and (max-width: 300px) {
