@@ -20,7 +20,7 @@ function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     ${status}
         <button type="button" class="btn btn-primary updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Mark as Done</button>
     </div>
-    <button type="button" class="btn btn-primary delete-button" id='deletebtn'>Delete</button>
+    <button type="button" class="btn btn-primary bg- delete-button" id='deletebtn'>Delete</button>
 </div>
 </div>`;
 
