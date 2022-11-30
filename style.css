@@ -1,6 +1,11 @@
+*{
+     font-family: 'Roboto', sans-serif;;
+}
+
 
 body{
     margin: 0!important;
+    background-color: rgba(64, 72, 91);
 }
 
 h1{
@@ -10,13 +15,17 @@ h1{
 .title-bar {
     height: 50px;
     width: 100%;
-    background-color: rgb(142, 175, 173);
+    background-image: linear-gradient(to right,rgb(190, 92, 198), rgb(74, 189, 210));
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-end;  
-    flex-direction: column;
     opacity: 0.9;
 }
+.title-bar img {
+    width: 60px;
+    height: 60px;
+}
+
 
 .container-fluid {
     padding-right: 0!important;
@@ -41,7 +50,7 @@ h1{
 }
 
 #time {
-    color: rgb(26, 22, 22);
+    color: rgb(0, 0, 0);
     opacity: 0.8;
     margin: 10px;
 }
@@ -80,17 +89,21 @@ h1{
 }
 .container-cards h1{
     text-align: center;
-    border-bottom: 1px dotted black;
+    color: white;
+    text-decoration: underline wavy  5px rgb(74, 189, 210);
     width: 40%;
-    font-size: 35px;
+    font-size: 50px;
+    font-family: 'Nerko One', cursive
 }
 
 .card-header{
-    background-color:rgb(218, 234, 233)
+    background-color:rgb(194, 87,201)
 }
 .card-footer{
-    background-color:rgb(218, 234, 233)
+    background-color: rgb(74, 189, 210);
 }
+
+
 
 @media screen and (max-width: 300px) {
     .title-bar h1 {
