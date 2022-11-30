@@ -1,5 +1,12 @@
-function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
+function createTaskHTML(id, name, description, assignedTo, dueDate, status) {
     const australianDueDate = new Date(dueDate).toLocaleDateString("en-GB"); // Parsing the ISO formatted date into Australian/Bristish date
+    
+    let displayStatus;
+    if (status === "Done") {
+        displayStatus = "none";
+    } else {
+        displayStatus = "block";
+    }
 
     const cardhtml = `<div class="col">
   <div class="card" id=${id}>
@@ -11,7 +18,10 @@ function createTaskHTML(name, description, assignedTo, dueDate, status, id) {
     </ul>
     <div class="card-footer">
     ${status}
+    <button type="button" class="btn btn-primary updateStatus-button" id='updateStatus-button_${id}' style="display:${displayStatus};">Mark as Done</button>
+    
     </div>
+    <button type="button" class="btn btn-primary delete-button" id='deletebtn'>Delete</button>
 </div>
 </div>`;
 
@@ -49,31 +59,78 @@ class TaskManager {
         }
         return taskWithStatus;
     }
+    deleteById(taskId) {
+        const newTask = [];
+        for (let i = 0; i < this.taskList.length; i++) {
+            const task = this.taskList[i];
+            if (task.id !== taskId) {
+                newTask.push(task);
+            }
+        }
+
+        this.taskList = newTask;
+    }
+
+    markAsDoneById(taskId) {
+        for (let i = 0; i < this.taskList.length; i++) {
+            if (this.taskList[i].id == taskId) {
+                this.taskList[i].status = "Done";
+            }
+        }
+    }
+
+    getTaskById(taskId) {
+        let taskByID;
+        for (let i = 0; i < this.taskList.length; i++) {
+            const task = this.taskList[i];
+            console.log(task);
+            if (task._id === taskId) {
+                taskByID = task;
+                console.log(taskByID);
+            }
+        }
+        return taskByID;
+    }
 
     render() {
         let displayCard = "";
 
-        this.taskList.map((task, index) => {
+        this.taskList.map((task) => {
             displayCard += createTaskHTML(
+                task.id,
                 task.taskName,
                 task.description,
                 task.assignedTo,
                 task.dueDate,
-                task.status,
-                index
+                task.status
             );
         });
 
         const cardWrap = document.getElementById("cardWrap");
 
-        return cardWrap.innerHTML = displayCard;
+        return (cardWrap.innerHTML = displayCard);
+    }
+
+    save() {
+        const tasksJson = JSON.stringify(this.taskList);
+
+        localStorage.setItem("tasks", tasksJson);
+
+        const currentId = String(this._id);
+
+        localStorage.setItem("currentId", currentId);
+    }
+
+    load() {
+        if (localStorage.getItem("tasks")) {
+            const tasksJson = localStorage.getItem("tasks");
+
+            this.taskList = JSON.parse(tasksJson);
+        }
+        if (localStorage.getItem("currentId")) {
+            const currentId = localStorage.getItem("currentId");
+
+            this._id = Number(currentId);
+        }
     }
 }
-
-/* commented out, can use to test addTask functionality.
-let tasks = new TaskManager(0);
-tasks.addTask("Jimmy", "cooking", "Jimmy", "32", "TO DO");
-tasks.addTask("Travis", "cooking", "Travis", "32", "TO DO");
-tasks.addTask("Elias", "cooking", "Travis", "32", "In Progress");
-console.log(tasks);
-*/
