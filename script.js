@@ -6,6 +6,8 @@ taskManager.render();
 
 const closeBtn = document.getElementById("closebtn");
 const deleteBtn = document.getElementById("deletebtn");
+const searchInput = document.getElementById("status");
+const getAllbtn = document.getElementById('getAllbtn')
 
 const taskForm = document.getElementById("taskForm");
 const formInput = document.getElementsByClassName("form-control");
@@ -23,11 +25,30 @@ const errorDate = document.getElementById("errorDate");
 const errorStatus = document.getElementById("errorStatus");
 
 let zeroErrors = 0;
+const date = new Date();
 
 // Display date
-const date = new Date();
-let currentDate = date.toLocaleDateString("en-GB"); // display date into Australian/Bristish format.
-document.getElementById("time").innerText = `${currentDate}`;
+
+function displayDate() {
+  const [month, day, year, hour, minute, second] = [
+    date.getMonth() + 1,
+    date.getDate(),
+    date.getFullYear(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+  ];
+
+  // let currentDate = date.toLocaleDateString("en-GB"); // display date into Australian/Bristish format.
+  // document.getElementById("time").innerText = `${currentDate}`;
+  document.getElementById("time").innerText = `${day < 10 ? `0` + day : day}-${
+    month < 10 ? `0` + month : month
+  }-${year}   ${hour < 10 ? `0` + hour : hour}:${
+    minute < 10 ? `0` + minute : minute
+  }`;
+}
+
+displayDate();
 
 // Form validation
 function errorMessage(errorId, message, input) {
@@ -46,7 +67,7 @@ function checkName(input) {
   if (input.value === "" || input.value.length > 8) {
     errorMessage(
       errorName,
-      "Name must be filled in and less than 8 characters!",
+      "Name must be filled in and less than 8 characters",
       taskName
     );
   } else {
@@ -58,7 +79,7 @@ function checkDescription(input) {
   if (input.value === "" || input.value.length > 15) {
     errorMessage(
       errorDescription,
-      "Description must be filled in and less than 15 characters!",
+      "Description must be filled in and less than 15 characters",
       taskDescription
     );
   } else {
@@ -70,7 +91,7 @@ function checkAssignedTo(input) {
   if (input.value === "" || input.value.length > 8) {
     errorMessage(
       errorAssignedTo,
-      "Name must be filled in and less than 8 characters!",
+      "Name must be filled in and less than 8 characters",
       taskAssignedTo
     );
   } else {
@@ -125,6 +146,7 @@ function resetForm() {
 // Form buttons event Listeners
 taskForm.addEventListener("submit", function (e) {
   e.preventDefault();
+
   checkName(taskName);
   checkDescription(taskDescription);
   checkAssignedTo(taskAssignedTo);
@@ -153,25 +175,39 @@ closeBtn.addEventListener("click", function (e) {
   resetForm();
 });
 
+let list = taskManager.taskList;
+
+searchInput.addEventListener("change", (e) => {
+  e.preventDefault()
+  
+  const value = e.target.value;
+
+  console.log(taskManager.getTasksWithStatus(value));
+
+  console.log(taskManager.taskList)
+  taskManager.render();
+});
+
+getAllbtn.addEventListener('click', (e) => {
+  window.location.reload()
+})
+
 const cardWrap = document.getElementById("cardWrap");
 
 cardWrap.addEventListener("click", function (e) {
-  if (e.target.classList.contains("delete-button")) {
-    let parentElement = e.target.parentElement;
-    let taskId = Number(parentElement.id);
+  let parentElement =
+    e.target.parentElement.parentElement.parentElement.parentElement;
+  let taskId = Number(parentElement.id);
 
+  if (e.target.classList.contains("delete-button")) {
     taskManager.deleteById(taskId);
     taskManager.save();
     taskManager.render();
   }
 
   if (e.target.classList.contains("updateStatus-button")) {
-    let parentElement = e.target.parentElement;
-    let taskId = Number(parentElement.parentElement.id);
-
     taskManager.markAsDoneById(taskId);
     taskManager.save();
     taskManager.render();
   }
-  
 });
