@@ -5,7 +5,7 @@
 
 body{
     margin: 0!important;
-    background-color: rgba(64, 72, 91);
+    background-color: rgb(219, 221, 226);
 }
 
 h1{
@@ -17,15 +17,18 @@ h1{
     width: 100%;
     background-image: linear-gradient(to right,rgb(190, 92, 198), rgb(74, 189, 210));
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;  
+    justify-content: space-between; 
+    align-items: flex-end;   
     opacity: 0.9;
-}
-.title-bar img {
-    width: 60px;
-    height: 60px;
+    padding: 0 10px 0 10px;
 }
 
+ .logo h1{
+    flex-grow: 2;
+    font-family: 'Syne Mono', monospace;
+    font-size: 40px;
+    
+} 
 
 .container-fluid {
     padding-right: 0!important;
@@ -38,8 +41,17 @@ h1{
     margin: 30px 10px
 }
 
+.titletask{
+    padding: 10px;
+}
+
 .card {
     min-height: 100%; /* Make the cards all the same height */
+    display: flex;
+    justify-content: space-between;
+    border: none; 
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .addTaskButton {
@@ -53,6 +65,8 @@ h1{
     color: rgb(0, 0, 0);
     opacity: 0.8;
     margin: 10px;
+    font-size: 13px;
+    text-align: center;
 }
 
 .errorMessage {
@@ -62,52 +76,122 @@ h1{
 
 .btnnewtask{
     border-radius: 50%;
+    background-color: #9E74C3;
+    border-color: #9E74C3;
 }
 
 .container-page{
-    height: 100vh;
     display: flex;
     justify-content: center;
 
 }
 
-.containerbtn{
-    background: url(./img/note.png) no-repeat center;
-    background-size: cover;
-    width: 40%;
-    height: 100%;
+.mx-auto {
+    margin:0!important
+}
+
+.header {
+    margin: 0 20px;
+}
+
+.new-task-container{
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+}   
+
+.search-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 2;
+    padding: 10px;
 }
-.containerbtn h1{
-    font-size: 25px;
-    font-style: italic;
+
+.search-wrapper label{
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.search-wrapper select{
+   width: 400px;
+}
+
+.containerBtn{
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    justify-content: space-between;
+
+}
+
+.title{
+    font-size: 50px;
+    font-family: 'Nerko One', cursive;
+    color: #9E74C3;
+    text-decoration: underline wavy  3px rgb(74, 189, 210);
+    text-align: center;
+    margin: 20px;
+    /* border-bottom: 3px dotted rgb(74, 189, 210); */
 }
 
 .container-cards{
-    width: 60%;
-}
-.container-cards h1{
-    text-align: center;
-    color: white;
-    text-decoration: underline wavy  5px rgb(74, 189, 210);
-    width: 40%;
-    font-size: 50px;
-    font-family: 'Nerko One', cursive
+    flex-grow: 2;
+    /* padding: 30px; */
 }
 
 .card-header{
-    background-color:rgb(194, 87,201)
+    color:white;
+    border-radius: 10px 10px 0 0!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9E74C3;
+    /* height: 100px; */
+    height: 50px;
+    min-height: 100%;
+    max-height: 100%;
+
 }
 
-.card-footer{
-  background-color: rgb(74, 189, 210);
+.statusForm{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa{
+    font: none;
+}
+
+.deleteForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .delete-button {
-    background-color:rgb(0, 0, 0) !important;
+    background-color:rgb(254, 252, 252) !important;
+    /* border-radius: 0!important; */
+    border: none;
+    color: red;
+}
+
+.row{
+    margin: 0!important;
+
+}
+
+.updateStatus-button{
+    background-color: rgb(119, 165, 208);
+    border: none;
+    border-radius: 0;
+}
+
+.alltaskbtn{
+    margin: 15px;
+    border: 1px solid gray;
+    width: 100px;
+    min-width: 10px;
 }
 
 
