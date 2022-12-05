@@ -27,7 +27,6 @@ h1{
     flex-grow: 2;
     font-family: 'Syne Mono', monospace;
     font-size: 40px;
-    
 } 
 
 .container-fluid {
@@ -195,8 +194,46 @@ h1{
 }
 
 
+@media screen and (max-width: 600px) {
+    .title-bar h1 {
+        font-size: 40px;
+    }
+    .containerBtn{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .titletask{
+        display: none;
+    }
+    .search-wrapper{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    #status{
+        width: 300px;
+    }
+}
+
 @media screen and (max-width: 300px) {
     .title-bar h1 {
-        font-size: 20px;
+        font-size: 40px;
+    }
+    .containerBtn{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .titletask{
+        display: none;
+    }
+    .search-wrapper{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    #status{
+        width: 200px;
     }
 }
